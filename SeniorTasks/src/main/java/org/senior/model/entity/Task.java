@@ -1,9 +1,12 @@
 package org.senior.model.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
+@Data
 public class Task {
 
     @Id
@@ -11,7 +14,7 @@ public class Task {
     private Integer id;
 
     @Column(nullable = false,length = 255)
-    private String descrition;
+    private String description;
 
     @Column(nullable = false)
     private BigDecimal price;
