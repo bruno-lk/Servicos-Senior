@@ -1,8 +1,8 @@
 package org.senior.rest;
 
+import lombok.RequiredArgsConstructor;
 import org.senior.model.entity.Task;
 import org.senior.model.repository.TaskRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -12,14 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/task")
+@RequiredArgsConstructor
 public class TaskController {
 
     private final TaskRepository taskRepository;
-
-    @Autowired
-    public TaskController( TaskRepository taskRepository ) {
-        this.taskRepository = taskRepository;
-    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
