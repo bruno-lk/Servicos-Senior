@@ -62,4 +62,16 @@ public class OrderController {
         return  orderRepository.findAll();
     }
 
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete( @PathVariable Integer id ){
+        orderRepository
+                .findById(id)
+                .map( task -> {
+                    orderRepository.delete(task);
+                    return Void.TYPE;
+                })
+                .orElseThrow( ()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pedido de serviço não encontrado") );
+    }
+
 }
