@@ -1,1 +1,53 @@
-<h1>Cadastro de Pedidos</h1>
+<h1 class="mt-4">Cadastro de Pedidos</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Cadsatro</li>
+</ol>
+
+<div class="container">
+  <form #taskForm="ngForm" (ngSubmit)="onSubmit()">
+
+    <div class="row" *ngIf="task.id">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>ID:</label>
+          <input type="text" class="form-control"
+            [ngModel]="task.id" name="idTask" disabled="true"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>*Descrição:</label>
+          <input type="text" class="form-control"
+            [(ngModel)]="task.description" name="description"/>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>*Preço: (Ex.: 5.25) </label>
+          <input type="text" class="form-control"
+            [(ngModel)]="task.price" name="price" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col md-4">
+        <button type="submit" class="btn btn-success mr-1" *ngIf="!task.id">
+          <i class="fa fa-save"></i> Salvar
+        </button>
+
+          <button type="submit" class="btn btn-primary mr-1" *ngIf="task.id">
+            <i class="fa fa-sync"></i> Atualizar
+          </button>
+  
+        <button type="button" class="btn btn-warning" (click)="returnToList()">
+          <i class="fa fa-arrow-left"></i> Voltar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

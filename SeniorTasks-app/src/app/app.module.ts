@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TaskFormComponent } from './task/task-form/task-form.component';
+import { TaskService } from './task.service';
 import { TaskModule } from './task/task.module';
 import { TemplateModule } from './template/template.module';
 
@@ -17,7 +17,9 @@ import { TemplateModule } from './template/template.module';
     TemplateModule,
     TaskModule
   ],
-  providers: [],
+  providers: [
+    TaskService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
