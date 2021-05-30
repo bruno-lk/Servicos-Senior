@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { TaskService } from './task.service';
 import { TaskModule } from './task/task.module';
 import { TemplateModule } from './template/template.module';
+import { TaskOrderModule } from './task-order/task-order.module';
+import { TaskOrderService } from './task-order.service';
 
 @NgModule({
   declarations: [
@@ -17,10 +19,12 @@ import { TemplateModule } from './template/template.module';
     AppRoutingModule,
     TemplateModule,
     TaskModule,
+    TaskOrderModule,
     HttpClientModule
   ],
   providers: [
-    TaskService
+    TaskService,
+    TaskOrderService
   ],
   bootstrap: [AppComponent]
 })

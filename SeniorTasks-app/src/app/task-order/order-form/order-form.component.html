@@ -1,0 +1,93 @@
+<h1 class="mt-4">Cadastro de Pedidos de Serviços</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Cadastro</li>
+</ol>
+
+<div class="container">
+  <form #taskForm="ngForm" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf="success == true">
+          Pedido de serviço salvo com sucesso!
+        </div>
+        <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+          {{ error }}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row" *ngIf="order.id">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>ID:</label>
+          <input type="text" class="form-control"
+            [ngModel]="order.id" name="idOrder" disabled="true"/>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Preço final:</label>
+          <input type="text" class="form-control"
+            [ngModel]="order.finalPrice" name="finalPriceOrder" disabled="true"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>*Serviço: </label>
+          <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="order.idTask">
+            <option value="">Selecione...</option>
+            <option *ngFor="let task of taskList" [ngValue]="task.id">
+              {{ task.description }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>*Funcionário:</label>
+          <input type="text" class="form-control"
+            [(ngModel)]="order.employee" name="employee"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>*Horas:</label>
+          <input type="text" class="form-control"
+            [(ngModel)]="order.time" name="time"/>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>*Imposto: (1.25)</label>
+          <input type="text" class="form-control"
+            [(ngModel)]="order.tax" name="tax"/>
+        </div>
+      </div>
+    </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <button class="btn btn-success" type="submit">
+            <i class="fa fa-save"></i>
+            Salvar
+          </button>
+  
+          <button type="button" class="btn btn-warning ml-1" (click)="returnToList()">
+            <i class="fa fa-arrow-left"></i> Voltar
+          </button>
+        </div>
+      </div>
+      
+  </form>
+</div>
